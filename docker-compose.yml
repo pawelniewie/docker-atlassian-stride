@@ -1,0 +1,19 @@
+version: "3"
+services:
+  stride:
+    build:
+      context: .
+      args:
+        USER: ${USER}
+        UID: ${UID}
+    environment:
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix:ro"
+      - "/etc/localtime:/etc/localtime"
+      - "stride:/home/${USER}/.config/Stride"
+    devices:
+      - "/dev/snd:/dev/snd"
+
+volumes:
+  stride:

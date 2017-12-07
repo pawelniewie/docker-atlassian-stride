@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cat > .env <<EOF
+UID=$UID
+USER=$USER
+EOF
+
+docker-compose up
