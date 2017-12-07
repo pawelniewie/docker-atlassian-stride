@@ -8,12 +8,15 @@ services:
         UID: ${UID}
     environment:
       DISPLAY: ${DISPLAY}
+    network_mode: "host"
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix:ro"
       - "/etc/localtime:/etc/localtime"
+      - "/dev/shm:/dev/shm"
       - "stride:/home/${USER}/.config/Stride"
     devices:
-      - "/dev/snd:/dev/snd"
-
+      - /dev/nvidia0
+      - /dev/nvidiactl
+      - /dev/snd
 volumes:
   stride:
